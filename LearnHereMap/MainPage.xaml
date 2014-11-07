@@ -1,0 +1,33 @@
+﻿<Page
+    x:Class="LearnHereMap.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LearnHereMap"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:maps="using:Windows.UI.Xaml.Controls.Maps"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid x:Name="Grid" Loaded="Grid_OnLoaded">
+
+
+
+        <maps:MapControl x:Name="mapControl">
+            <TextBlock x:Name="tbOutputText"  Text="123" Foreground="#FFC32929"></TextBlock>
+
+        </maps:MapControl>
+    </Grid>
+
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Label="Refresh" Icon="Refresh" Click="AppBarButton_Click"/>
+
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Label="Add" Icon="Add" Click="AppBarButton_Click"/>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+
+</Page>
