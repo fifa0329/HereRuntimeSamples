@@ -98,6 +98,16 @@ namespace LearnHereMap
             mapControl.TransformOriginChanged += mapControl_TransformOriginChanged;
 
 
+
+            mapControl.WatermarkMode=MapWatermarkMode.Automatic;
+
+
+
+
+
+
+
+
             AddMarker();
 
             AddOverlay();
