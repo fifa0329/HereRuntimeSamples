@@ -28,8 +28,12 @@ namespace LearnHereMap
 
             NavigationCacheMode = NavigationCacheMode.Required;
 
-
             mapControl.DataContext = new ViewModel();
+        }
+
+        void mapControl_TransformOriginChanged(MapControl sender, object args)
+        {
+              Debug.WriteLine(mapControl.TransformOrigin.ToString());
         }
 
 
@@ -89,6 +93,9 @@ namespace LearnHereMap
             //Learn property changed
             mapControl.CenterChanged += mapControl_CenterChanged;
 
+
+            //尝试理解
+            mapControl.TransformOriginChanged += mapControl_TransformOriginChanged;
 
 
             AddMarker();
