@@ -31,9 +31,9 @@ namespace LearnHereMap
             mapControl.DataContext = new ViewModel();
         }
 
-        void mapControl_TransformOriginChanged(MapControl sender, object args)
+        private void mapControl_TransformOriginChanged(MapControl sender, object args)
         {
-              Debug.WriteLine(mapControl.TransformOrigin.ToString());
+            Debug.WriteLine(mapControl.TransformOrigin.ToString());
         }
 
 
@@ -89,7 +89,6 @@ namespace LearnHereMap
             mapControl.ZoomLevel = 10;
 
 
-
             //Learn property changed
             mapControl.CenterChanged += mapControl_CenterChanged;
 
@@ -98,39 +97,56 @@ namespace LearnHereMap
             mapControl.TransformOriginChanged += mapControl_TransformOriginChanged;
 
 
-
-            mapControl.WatermarkMode=MapWatermarkMode.Automatic;
-
+            mapControl.WatermarkMode = MapWatermarkMode.Automatic;
 
 
+            //3d 建筑 双指下滑
+            mapControl.LandmarksVisible = false;
 
 
+            //AddMarker();
 
-
-
-            AddMarker();
-
-            AddOverlay();
+            //AddOverlay();
 
             //Geocode();
 
             //GetRouteAndDirections();
 
-            MoveCamera();
+            //MoveCamera();
 
+
+            MoveCameraBounds();
+        }
+
+        private void MoveCameraBounds()
+        {
+            var center = new BasicGeoposition { Longitude = 116.3, Latitude = 25 };
+            var geopoint = new Geopoint(center);
+            mapControl.TrySetViewAsync(geopoint, 6, 0, 0, MapAnimationKind.Bow);
+
+
+            var westNorth = new BasicGeoposition
+            {
+                Longitude = 110,
+                Latitude = 40
+            };
+
+
+            var eastSouth = new BasicGeoposition { Longitude = 111, Latitude = 39 };
+            var bound = new GeoboundingBox(westNorth, eastSouth);
+            mapControl.TrySetViewBoundsAsync(bound, new Thickness(0,0,0,0), MapAnimationKind.None);
         }
 
         private void MoveCamera()
         {
-
             var center = new BasicGeoposition { Longitude = 116.3, Latitude = 25 };
-            Geopoint geopoint=new Geopoint(center);
+            var geopoint = new Geopoint(center);
             mapControl.TrySetViewAsync(geopoint, 6, 0, 0, MapAnimationKind.Bow);
         }
 
-        void mapControl_CenterChanged(MapControl sender, object args)
+        private void mapControl_CenterChanged(MapControl sender, object args)
         {
-            Debug.WriteLine((sender as MapControl).Center.Position.Longitude);
+            Debug.WriteLine(sender.Center.Position.Longitude);
         }
 
         private void AddOverlay()
