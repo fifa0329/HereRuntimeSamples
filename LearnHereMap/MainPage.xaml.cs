@@ -60,6 +60,11 @@ namespace LearnHereMap
                         "http://i.stack.imgur.com/mM3h7.jpg?s=32&g=1", UriKind.RelativeOrAbsolute))
             };
             mapControl.MapElements.Add(mapIcon1);
+            
+
+
+
+
         }
 
 
@@ -104,9 +109,12 @@ namespace LearnHereMap
             mapControl.LandmarksVisible = false;
 
 
-            //AddMarker();
+            AddMarker();
 
-            //AddOverlay();
+            AddOverlay();
+
+
+            mapControl.LandmarksVisible = true;
 
             //Geocode();
 
@@ -115,7 +123,7 @@ namespace LearnHereMap
             //MoveCamera();
 
 
-            MoveCameraBounds();
+            //MoveCameraBounds();
         }
 
         private void MoveCameraBounds()
@@ -163,6 +171,10 @@ namespace LearnHereMap
             mapControl.Children.Add(fence);
             MapControl.SetLocation(fence, point);
             MapControl.SetNormalizedAnchorPoint(fence, new Point(0.5, 1));
+
+
+
+
         }
 
 
